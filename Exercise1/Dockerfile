@@ -10,14 +10,9 @@ COPY . /Exercise1
 # Install pip and upgrade it to the latest version
 RUN python -m pip install --upgrade pip
 
-# Install the required Python packages individually to better catch errors
-RUN pip install matplotlib==3.4.3 && \
-    pip install plotly_express==0.4.1 && \
-    pip install pandas==1.2.4 && \
-    pip install numpy==1.20.2 && \
-    pip install dash==1.21.0 && \
-    pip install scikit-learn==0.24.2
+# Install the required Python packages
+RUN pip install matplotlib plotly_express pandas numpy dash scikit-learn
 
+# Run the print_packages.py script when the container launches
+CMD ["python", "print_packages.py"]
 
-# Run ex1_0_setup.py when the container launches
-CMD ["python", "src/ex1_0_setup.py"]
